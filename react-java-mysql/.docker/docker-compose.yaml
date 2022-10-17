@@ -34,6 +34,7 @@ services:
       - db-password
     volumes:
       - db-data:/var/lib/mysql
+      - db/test-db:/var/lib/mysql/test-db-scripts
     networks:
       - spring-mysql
   frontend:
