@@ -27,7 +27,7 @@ services:
       - MYSQL_USER=user_1
       - MYSQL_PASSWORD=password_1
     ports:
-      - '3306:3306'
+      - 3306:3306
     restart: always
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent"]
@@ -41,6 +41,9 @@ services:
       - ./db-setup:/var/lib/mysql/test-db-scripts
     networks:
       - spring-mysql
+    expose:
+      - 3306
+      - 33060
   frontend:
     build:
       context: frontend
