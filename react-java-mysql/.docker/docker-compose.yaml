@@ -10,6 +10,8 @@ services:
       MYSQL_HOST: db
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 8086:8086
     networks:
       - react-spring
       - spring-mysql
