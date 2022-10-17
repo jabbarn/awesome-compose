@@ -1,4 +1,4 @@
-package com.company.project.entity;
+package hva.jabbarn.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
