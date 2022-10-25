@@ -1,7 +1,9 @@
 package hva.jabbarn.repository;
 
 import hva.jabbarn.util.Identifiable;
+import org.springframework.cache.annotation.CacheConfig;
 
+import javax.persistence.Cacheable;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -21,7 +23,6 @@ public abstract class AbstractEntityRepositoryJPA<E extends Identifiable> implem
         System.out.println("Created:" + this.getClass().getName() + "<" + this.theEntityClass.getSimpleName() + ">");
     }
 
-    @Override
     public List<E> findAll() {
         TypedQuery<E> query = this.entityManager.createQuery("select e from " + this.theEntityClass.getSimpleName() + " e", theEntityClass);
         return query.getResultList();
