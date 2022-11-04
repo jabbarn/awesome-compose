@@ -15,6 +15,7 @@ Project structure:
 │   ├── Dockerfile
 │   ...
 ├── db
+│   ├── test-db-scripts
 │   └── password.txt
 ├── compose.yaml
 ├── frontend
@@ -90,3 +91,12 @@ Removing react-java-mysql-frontend-1 ... done
 Removing react-java-mysql-db-1       ... done
 Removing network react-java-mysql-default
 ```
+# Setup after installation
+After you've got the containers running, you need to tweak some configurations such as inflating the employee database and setting the property for the backend to said database. Make sure the containers are running.
+
+1. first login the db and `cd tmp/test-db-scripts` to get to the db scripts.
+2. then run `mysql -u root --password=db-57xsl < employees.sql` to actually inflate the database.
+![image](https://user-images.githubusercontent.com/24189525/199944269-7baf9c61-89c5-4728-8543-eb0c68b9e545.png)
+3. after setting up the database, login into the backend container and type `cd src/main/resources`
+4. Type `nano application.properties` and set spring.datasource.url to `jdbc:mysql://${MYSQL_HOST:localhost}:3306/employees` instead of .../example
+![image](https://user-images.githubusercontent.com/24189525/199945250-2a663959-a5a3-479f-bb80-152fb4d9ff23.png)
