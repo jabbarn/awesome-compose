@@ -20,10 +20,12 @@ public class EmployeeController {
     public EmployeeController(EmployeeService service) {
         this.service = service;
     }
+
     @GetMapping("/normal")
     public List<Employee> getEmployees() {
         return service.getEmployees();
     }
+
     @GetMapping("/async")
     public CompletableFuture<List<Employee>> getAsyncEmployees() {
         return service.getAsyncEmployees();
