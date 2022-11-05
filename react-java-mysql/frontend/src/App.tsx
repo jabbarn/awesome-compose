@@ -1,43 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-
-type Greeting = {
-  id: number;
-  name: string;
-};
+import { Link } from "react-router-dom";
 
 function App() {
-  const [greeting, setGreeting] = useState<Greeting>();
-  useEffect(() => {
-    fetch("/api")
-      .then(res => res.json())
-      .then(setGreeting)
-      .catch(console.error);
-  }, [setGreeting]);
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        {greeting ? (
-          <p>Hello from {greeting.name}</p>
-        ) : (
-          <p>Loading...</p>
-        )}
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    return (
+        <div className="App">
+            <header className="App-header">
+                <img src={logo} className="App-logo" alt="logo" />
+                <h1>Hi there, beware the following routes may exceed your memory.</h1>
+                <Link to='/normal'>The normal method</Link>
+                <Link to='/cached'>The cached method</Link>
+                <Link to='/async'>The async method</Link>
+
+            </header>
+        </div>
+    );
 }
 
 export default App;
