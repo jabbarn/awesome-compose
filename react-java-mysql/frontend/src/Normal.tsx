@@ -43,16 +43,16 @@ function Normal() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         {employees ? (
-          employees.map(employee => {
-            return <p>Hello from [{employee.id}] {employee.first_name} {employee.last_name} (hired on: {new Date(employee.hire_date.toLocaleString()).toLocaleDateString('nl-NL')})</p>
+          employees.map((employee, index) => {
+            return <p key={index}>Hello from [{employee.id}] {employee.first_name} {employee.last_name} (hired on: {new Date(employee.hire_date.toLocaleString()).toLocaleDateString('nl-NL')})</p>
           })
         ) : (
           <p>Loading Employees...</p>
         )}
         {libraries ? (
-          libraries[0].results.map(library => {
-            return <p>Library: [{library.name}] {library.latest})</p>
-        })
+          libraries[0].results.map((library, index) => {
+            return <p key={index}>Library: [{library.name}] {library.latest})</p>
+          })
 
         ) : (
           <p>Loading Libraries...</p>
